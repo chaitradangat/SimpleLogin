@@ -1,39 +1,26 @@
-using Microsoft.Extensions.DependencyInjection;
-using SimpleLogin.Domain.Constants;
 using SimpleLogin.Extensions;
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 
 /*Add Services*/
 
-// app configuration
+//Configuration
 builder.AddConfiguration(args);
 
+//Authentication
 
-
-
-// authentication
-
-// cors
+//Cors
 builder.Services.AddCors();
 
-// dbcontext 
+//DbContext
 
-// logging
+//Logging
 builder.Services.AddLogging();
-
-
-
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
-
-
 
 var app = builder.Build();
 

@@ -1,5 +1,5 @@
 ﻿using Azure.Identity;
-using SimpleLogin.Domain.Constants;
+using Microsoft.Extensions.Configuration.AzureKeyVault;
 
 namespace SimpleLogin.Extensions
 {
@@ -7,19 +7,15 @@ namespace SimpleLogin.Extensions
     {
         public static void AddConfiguration(this WebApplicationBuilder builder, string[] args)
         {
-            var keyVaultURL = "";//settings["KeyVaultConfiguration:KeyVaultURL"];
-            var keyVaultClientId = "";//settings["KeyVaultConfiguration:ClientId"];
-            var keyVaultClientSecret = "";//settings["KeyVaultConfiguration:ClientSecret"];
-
+            var keyVaultURL = builder.Configuration["KeyVaultConfiguration:KeyVaultURL"];
 
             var cfgbuilder = new ConfigurationBuilder()
                             .SetBasePath(Directory.GetCurrentDirectory())
                             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                             .AddEnvironmentVariables()
                             .AddCommandLine(args)
-                            .AddAzureKeyVault(new Uri(""), new DefaultAzureCredential() );
+                            .AddAzureKeyVault(new Uri(keyVaultURL), new DefaultAzureCredential());
                             
-
             IConfiguration configuration = cfgbuilder.Build();
 
             builder.Services.AddSingleton<IConfiguration>(configuration);
