@@ -1,25 +1,18 @@
 using Microsoft.Extensions.DependencyInjection;
 using SimpleLogin.Domain.Constants;
+using SimpleLogin.Extensions;
 
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+/*Add Services*/
 
 // app configuration
-var cfgbuilder = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-    .AddEnvironmentVariables()
-    .AddCommandLine(args);
-IConfiguration configuration = cfgbuilder.Build();
+builder.AddConfiguration(args);
 
-builder.Services.Configure<AzureConfig>(configuration.GetSection("AzureConfig"));
+
+
 
 // authentication
 
@@ -28,10 +21,17 @@ builder.Services.AddCors();
 
 // dbcontext 
 
-
-
 // logging
 builder.Services.AddLogging();
+
+
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
 
 
 
