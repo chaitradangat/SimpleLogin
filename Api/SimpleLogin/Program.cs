@@ -5,7 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 /*Add Services*/
 
 //Configuration
-builder.AddConfiguration(args);
+builder.UseConfiguration(args);
+
+builder.ConfigureDbContext();
+
 
 //Authentication
 

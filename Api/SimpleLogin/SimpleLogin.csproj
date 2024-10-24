@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SimpleLogin.Database\SimpleLogin.Database.csproj" />
     <ProjectReference Include="..\SimpleLogin.Domain\SimpleLogin.Domain.csproj" />
   </ItemGroup>
 

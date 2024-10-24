@@ -1,11 +1,10 @@
 ﻿using Azure.Identity;
-using Microsoft.Extensions.Configuration.AzureKeyVault;
 
 namespace SimpleLogin.Extensions
 {
-    public static class ReadConfiguration
+    public static class ReadConfigurationExtensions
     {
-        public static void AddConfiguration(this WebApplicationBuilder builder, string[] args)
+        public static void UseConfiguration(this WebApplicationBuilder builder, string[] args)
         {
             var keyVaultURL = builder.Configuration["KeyVaultConfiguration:KeyVaultURL"];
 
