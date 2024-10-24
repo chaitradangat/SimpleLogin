@@ -16,6 +16,8 @@ namespace SimpleLogin.Extensions
             builder.Services.AddDbContext<LoginDbContext>(options => {
             
                 options.UseSqlServer(dbConString);
+
+                
             
             },ServiceLifetime.Transient);
         }

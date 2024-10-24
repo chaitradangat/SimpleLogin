@@ -2,6 +2,6 @@
 {
     public interface IUnitOfWork
     {
-
+        ISampleRepository Samples { get; }
     }
 }

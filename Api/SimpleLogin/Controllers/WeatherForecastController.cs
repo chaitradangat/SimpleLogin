@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SimpleLogin.Repository;
 
 namespace SimpleLogin.Controllers
 {
@@ -16,10 +17,13 @@ namespace SimpleLogin.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConfiguration config)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConfiguration config, IUnitOfWork unitOfWork)
         {
             _logger = logger;
             _config = config;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -38,5 +42,14 @@ namespace SimpleLogin.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("GetSamples")]
+        public IActionResult GetSamples() 
+        { 
+            var result = _unitOfWork.Samples.GetSamples();
+
+            return Ok(result);
+        }
+
     }
 }

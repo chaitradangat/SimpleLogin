@@ -9,6 +9,7 @@ builder.UseConfiguration(args);
 
 builder.ConfigureDbContext();
 
+builder.ConfigureRepositories();
 
 //Authentication
 
