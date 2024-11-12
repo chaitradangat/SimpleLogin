@@ -1,4 +1,9 @@
 ﻿using Azure.Identity;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.IO;
 
 namespace SimpleLogin.Extensions
 {

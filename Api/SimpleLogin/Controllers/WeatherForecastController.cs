@@ -1,5 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using SimpleLogin.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SimpleLogin.Controllers
 {
