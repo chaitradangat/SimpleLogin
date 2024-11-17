@@ -6,7 +6,7 @@ const routes: Routes = [
 
 {path:'*',component: HomeComponent },
 
-{path:'Login', loadChildren:()=> import('./login/login.module').then(l=>l.LoginModule)}
+{path:'login', loadChildren:()=> import('./login/login.module').then(l=>l.LoginModule)}
 
 ];
 
