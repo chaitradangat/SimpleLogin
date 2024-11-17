@@ -16,10 +16,16 @@ namespace SimpleLogin.Extensions
 
             string dbConString = configuration["DbConnectionString"];
 
-            builder.Services.AddDbContext<LoginDbContext>(options => {
-            
-                options.UseSqlServer(dbConString);
+            builder.Services.AddDbContext<LoginDbContext>(options => 
+            {
 
+            options.UseSqlServer(dbConString,sqloptions => {
+
+                sqloptions.EnableRetryOnFailure(5);
+            });
+
+                options.EnableDetailedErrors();
+                
                 
             
             },ServiceLifetime.Transient);
