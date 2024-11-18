@@ -14,10 +14,7 @@ namespace SimpleLogin.Controllers
         [HttpGet]
         public IActionResult Login()
         { 
-            var result = new ObjectResult(1);
-
-            return Problem();
-            //return Ok();
+            return Ok();
         } 
 
     }
